@@ -1,3 +1,5 @@
+-- 1. Classes inciais
+
 CREATE TABLE produtos (
     id_produto SERIAL PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
