@@ -42,10 +42,10 @@ refactor(api): simplificar código de rotas
 docs: atualizar README com guia de deployment
 ```
 
-Docker (Postgres + Adminer)
+Docker (Postgres)
 ---------------------------
 
-Incluí um `docker-compose.yml` para facilitar o ambiente local com Postgres e Adminer (interface web para administrar tabelas).
+Incluí um `docker-compose.yml` para facilitar o ambiente local com Postgres.
 
 Para subir o ambiente (PowerShell):
 
@@ -55,14 +55,10 @@ docker compose up -d --build
 
 A configuração monta `sqlstartup.sql` (se presente) em `/docker-entrypoint-initdb.d/` para executar scripts de inicialização.
 
-pgAdmin ficará disponível em `http://localhost:8080` (usuário/email: `admin@local`, senha: `admin` — ou ajuste `PGADMIN_DEFAULT_EMAIL`/`PGADMIN_DEFAULT_PASSWORD` no `docker-compose.yml`).
-  
-Para conectar ao servidor Postgres via pgAdmin, crie um novo servidor em pgAdmin apontando para `db` (ou `localhost` se preferir) na porta `5432` e use as credenciais `postgres` / `postgres` (ou as variáveis definidas em `docker-compose.yml`).
-
 Uso da instância Docker
 -----------------------
 
-Subir os serviços (Postgres + pgAdmin):
+Subir os serviços (Postgres):
 
 ```powershell
 docker compose up -d --build
@@ -79,10 +75,6 @@ Ver logs do Postgres:
 ```powershell
 docker compose logs -f db
 ```
-
-Acessar o pgAdmin: abrir `http://localhost:8080` e entrar com as credenciais configuradas no `docker-compose.yml` (por padrão `admin@local` / `admin`).
-
-Criar um servidor no pgAdmin apontando para o serviço `db` (host: `db`, porta: `5432`, usuário: `postgres`, senha: `postgres`).
 
 Scripts de inicialização
 -----------------------
